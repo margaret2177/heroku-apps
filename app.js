@@ -119,19 +119,24 @@ app.post("/", function(req, res) {
   const newitem = new Item({
     name: item
   });
-  if (listName === "Today") {
-    newitem.save();
+  if(item === " "){
     res.redirect("/");
-  } else {
-    List.findOne({
-      name: listName
-    }, function(err, foundItem) {
-      foundItem.items.push(newitem);
-      foundItem.save();
-      res.redirect("/" + listName);
-    });
-  }
+  }else{
 
+    if (listName === "Today") {
+      newitem.save();
+      res.redirect("/");
+    } else {
+      List.findOne({
+        name: listName
+      }, function(err, foundItem) {
+        foundItem.items.push(newitem);
+        foundItem.save();
+        res.redirect("/" + listName);
+      });
+    }
+
+  }
 
 
 });
