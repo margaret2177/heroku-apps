@@ -116,13 +116,13 @@ app.post("/", function(req, res) {
   const listName = req.body.list;
 
 
-  const newitem = new Item({
-    name: item
-  });
+
   if(item === " "){
     res.redirect("/");
   }else{
-
+    const newitem = new Item({
+      name: item
+    });
     if (listName === "Today") {
       newitem.save();
       res.redirect("/");
