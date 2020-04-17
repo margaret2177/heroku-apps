@@ -117,7 +117,7 @@ app.post("/", function(req, res) {
 
 
 
-  if(item === " "){
+  if(item === ""){
     res.redirect("/");
   }else{
     const newitem = new Item({
